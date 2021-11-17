@@ -1,0 +1,46 @@
+// * GLOBAL SETTINGS
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+body{
+  background-color: $app-bg;
+}
+
+// ? Font sizes
+
+label, p, span, input, select, textarea,
+a, td, th, strong, i, button, .p-inputtext,
+.p-inline-message .p-inline-message-text, div{
+  font-size: $font-size;
+}
+
+
+// ? Placeholders
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: lighten($text-color, 50%);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: lighten($text-color, 50%);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: lighten($text-color, 50%);
+}
+
+
+// ? Links
+a{
+  text-decoration: none;
+  color: $blue;
+  &:hover{
+    color: darken($blue, 10%);
+  }
+}

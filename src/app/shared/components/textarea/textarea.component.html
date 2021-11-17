@@ -1,0 +1,12 @@
+<div class="p-field w-100" [ngClass]="fieldOptions.containerClass">
+  <label>{{ fieldOptions.label }}</label>
+  <textarea
+    [rows]="fieldOptions.rows"
+    [cols]="fieldOptions.cols"
+    [placeholder]="fieldOptions.placeholder ?? ''"
+    [formControlName]="fieldOptions.formControlName"
+    pInputTextarea
+  ></textarea>
+
+  <app-field-errors [errors]="errors"></app-field-errors>
+</div>

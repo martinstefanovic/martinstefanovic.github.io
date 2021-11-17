@@ -1,0 +1,213 @@
+// * MAIN CONTENT
+.main-card {
+  border-radius: 4px;
+  // background-color: $app-bg;
+  width: 100%;
+  padding: 1.9rem 0px;
+
+  h3 {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .hr {
+    width: 100%;
+    height: 1px;
+    background-color: $main-border;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    margin-top: 1.2rem;
+  }
+
+  h1.card-title{
+    @include xs{
+      margin-top: 0px;
+    }
+  }
+
+  .card-body {
+    margin-top: 1.9rem;
+  }
+
+  .card-title-section {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .card-title {
+      margin-top: 0px;
+    }
+  }
+}
+
+// * MAIN CARD
+.card {
+  border: 1px solid $main-border;
+  background-color: #fff;
+  padding: 1.9rem;
+  border-radius: 5px;
+}
+
+
+// * TABLE FILTERS
+.toggle-filter-btn{
+  display: none;
+  @include xs{
+    display: flex;
+  }
+}
+
+.page-control {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all .3s;
+  opacity: 1;
+  visibility: visible;
+
+  .filter-dark-bg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    @include xs{
+      display: block;
+    }
+  }
+
+  .close-bar{
+    display: none;
+    @include xs{
+      display: flex;
+    }
+  }
+
+  &.toggle-filters{
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+    margin-bottom: -200px;
+  }
+  @include xs{
+    flex-flow: column;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    padding:1rem;
+    padding-top: 0px;
+    background: #fff;
+    z-index: 90;
+    box-shadow: 0 -10px 20px #0000000d;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .filter-buttons{
+    display: flex;
+    align-items: center;
+    @include xs{
+      flex-flow: row;
+    }
+  }
+
+  .input-fields {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+
+    @include xs{
+      .p-inputgroup, .p-input-icon-left{
+        width: 100% !important;
+        margin-right: 0px !important;
+      }
+      .filter-item{
+        width: 100%;
+        margin-bottom: .5rem;
+      }
+    }
+
+    .dropdown-width{
+      @include xs{
+        min-width: 100% !important;
+      }
+    }
+
+    @include xs{
+      width: 100%;
+      flex-flow: column;
+      margin-right: 0px;
+    }
+  }
+}
+
+// * REORDER
+.item-img {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  border-radius: $border-radius;
+}
+.reorder-description{
+  @include xs{
+    display: none;
+  }
+}
+.reorder-body{
+  @include xs{
+    flex-flow: column;
+  }
+  .reorder-content{
+    @include xs{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+
+.reorder-action-buttons {
+  display: flex;
+  align-items: center;
+
+  @include xs{
+    margin-top: 1rem;
+  }
+
+  .small-btn {
+    margin-top: -5px;
+  }
+}
+
+// * SCROLL BAR
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  $sidebar-bg;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $main-color;
+}

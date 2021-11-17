@@ -1,0 +1,28 @@
+@import "src/assets/scss/partials/variables";
+@import "src/assets/scss/partials/mixins";
+
+.top-header {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  height: 65px;
+  justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  z-index: 200;
+  background-color: #fff;
+  padding: 0px 2.5rem;
+  box-shadow: 0 10px 30px 0 rgb(82 63 105 / 8%);
+
+  @include xs {
+    height: 55px;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    background-color: #fff;
+    padding: 0px 1rem;
+    box-shadow: 0 10px 20px #0000000d;
+    justify-content: space-between;
+    padding-left: 4rem;
+  }
+}

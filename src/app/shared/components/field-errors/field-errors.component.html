@@ -1,0 +1,15 @@
+<ng-container *ngIf="errors">
+  <small *ngIf="errors.maxlength" class="p-error">
+    Polje ima {{ errors.maxlength.actualLength }} karaktera a mora biti ispod
+    {{ errors.maxlength.requiredLength }} karaktera.
+  </small>
+  <small *ngIf="errors.pattern" class="p-error">
+    {{ fieldOptions.errorMessage }}
+  </small>
+  <small *ngIf="errors.required == true" class="p-error">
+    Ovo polje je obavezno!
+  </small>
+  <small *ngIf="errors.email == true" class="p-error">
+    Molimo unesite pravilnu email adresu.
+  </small>
+</ng-container>

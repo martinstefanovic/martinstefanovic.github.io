@@ -1,0 +1,15 @@
+// * IMPORTS
+
+// ? Library
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.bubble.css";
+@import "~quill/dist/quill.snow.css";
+
+// ? Custom
+@import "src/assets/scss/partials/variables";
+@import "src/assets/scss/partials/normalize";
+@import "src/assets/scss/partials/buttons";
+@import "src/assets/scss/partials/main-content";
+@import "src/assets/scss/partials/utility";
+@import "src/assets/scss/partials/primeng-override";
+@import "src/assets/scss/partials/quill-override";

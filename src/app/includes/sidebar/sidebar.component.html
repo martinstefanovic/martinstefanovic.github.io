@@ -1,0 +1,72 @@
+<nav [ngClass]="{ collapsed: expand }">
+  <section class="nav-top-header">
+    <h1 class="main-logo">Form Builder</h1>
+    <a class="expand" (click)="collapseMenu()">
+      <div class="expand-bg">
+        <app-close-icon></app-close-icon>
+      </div>
+    </a>
+  </section>
+
+  <div class="nav-items">
+    <ng-container *ngFor="let menuItem of menuItems">
+      <ng-container *ngIf="menuItem.type == 'title'">
+        <span class="menu-group-title"> {{ menuItem.title }} </span>
+      </ng-container>
+      <ng-container *ngIf="menuItem.path">
+        <a
+          class="nav-item"
+          [routerLink]="[menuItem.path]"
+          routerLinkActive="active"
+          [pTooltip]="menuItem.title"
+          tooltipPosition="right"
+          [tooltipDisabled]="!expand"
+          [ngClass]="{ 'sidebar-in-progress': menuItem.progress }"
+          (click)="innerWidth < 500 ? collapseMenu() : null"
+        >
+          <i [class]="menuItem.icon"></i>
+          <span> {{ menuItem.title }} </span>
+        </a>
+      </ng-container>
+      <ng-container *ngIf="menuItem.type === 'dropdown'">
+        <section class="nav-item-dropdown">
+          <a
+            class="nav-item"
+            [pTooltip]="menuItem.title"
+            tooltipPosition="right"
+            [tooltipDisabled]="!expand"
+            [ngClass]="{ 'active-dropdown': menuItem.opened }"
+            (click)="menuItem.opened = !menuItem.opened"
+          >
+            <i [class]="menuItem.icon"></i>
+            <span> {{ menuItem.title }} </span>
+            <ng-container *ngIf="menuItem.opened; else iconUp">
+              <i class="pi pi-angle-up sidebar-dropdown-icon"></i>
+            </ng-container>
+            <ng-template #iconUp>
+              <i class="pi pi-angle-down sidebar-dropdown-icon"></i>
+            </ng-template>
+          </a>
+          <div class="nav-subitems" [ngClass]="menuItem.opened ? 'opened' : ''">
+            <a
+              *ngFor="let subItem of menuItem.children"
+              class="nav-item nav-subitem"
+              [ngClass]="{ 'sidebar-in-progress': subItem.progress }"
+              [routerLink]="[subItem.path]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [pTooltip]="subItem.title"
+              tooltipPosition="right"
+              [tooltipDisabled]="!expand"
+              (click)="innerWidth < 500 ? collapseMenu() : null"
+            >
+              <i [class]="subItem.icon"></i>
+              <span> {{ subItem.title }} </span>
+            </a>
+          </div>
+        </section>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="mobile-close-menu" (click)="collapseMenu()"></div>
+</nav>

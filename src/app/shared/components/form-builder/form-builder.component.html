@@ -1,0 +1,72 @@
+<ng-container *ngIf="multiLang; else notMultiLangTemplate">
+  <p-tabView>
+    <p-tabPanel *ngFor="let lang of appConfig.languages" [header]="lang.name">
+      <!-- * MAIN FORM -->
+      <section
+        class="p-grid"
+        [ngClass]="styleClass"
+        [formGroup]="CustomUtils.getLangFormGroup(form, lang.code)"
+      >
+        <ng-container *ngFor="let field of fields">
+          <!-- * IF - group of fields -->
+          <ng-container *ngIf="field.group; else elseTemplate">
+            <!-- * Define column size -->
+            <div [class]="field.colSize">
+              <ng-container *ngFor="let subfield of field.group">
+                <!-- * Find and use type of control -->
+                <app-form-builder-core
+                  [field]="subfield"
+                  [form]="CustomUtils.getLangFormGroup(form, lang.code)"
+                  [mainForm]="mainForm"
+                ></app-form-builder-core>
+              </ng-container>
+            </div>
+          </ng-container>
+          <!-- * IF - single field -->
+          <ng-template #elseTemplate>
+            <!-- * Define column size -->
+            <div [class]="field.colSize">
+              <app-form-builder-core
+                [field]="field"
+                [form]="CustomUtils.getLangFormGroup(form, lang.code)"
+                [mainForm]="mainForm"
+              ></app-form-builder-core>
+            </div>
+          </ng-template>
+        </ng-container>
+      </section>
+    </p-tabPanel>
+  </p-tabView>
+</ng-container>
+<ng-template #notMultiLangTemplate>
+  <!-- * MAIN FORM -->
+  <section class="p-grid" [ngClass]="styleClass" [formGroup]="form">
+    <ng-container *ngFor="let field of fields">
+      <!-- * IF - group of fields -->
+      <ng-container *ngIf="field.group; else elseTemplate">
+        <!-- * Define column size -->
+        <div [class]="field.colSize">
+          <ng-container *ngFor="let subfield of field.group">
+            <!-- * Find and use type of control -->
+            <app-form-builder-core
+              [field]="subfield"
+              [form]="form"
+              [mainForm]="mainForm"
+            ></app-form-builder-core>
+          </ng-container>
+        </div>
+      </ng-container>
+      <!-- * IF - single field -->
+      <ng-template #elseTemplate>
+        <!-- * Define column size -->
+        <div [class]="field.colSize">
+          <app-form-builder-core
+            [field]="field"
+            [form]="form"
+            [mainForm]="mainForm"
+          ></app-form-builder-core>
+        </div>
+      </ng-template>
+    </ng-container>
+  </section>
+</ng-template>

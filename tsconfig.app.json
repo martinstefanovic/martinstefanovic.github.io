@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "baseUrl": "src",
+    "paths": {
+      "@services/*": ["app/core/services/*"],
+      "@config/*": ["app/core/config/*"],
+      "@guard/*": ["app/core/guards/*"],
+      "@coreShared/*": ["app/core/shared/*"],
+      "@authentication/*": ["app/core/authentication/*"],
+      "@environments/*": ["environments/*"],
+      "@shared/*": ["app/shared/*"],
+      "@modules/*": ["app/modules/*"],
+      "@includes/*": ["app/includes/*"],
+    }
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "**/*.stories.*"
+  ]
+}

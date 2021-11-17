@@ -1,0 +1,165 @@
+<app-content-layout headerType="main" headerTitle="Form builder">
+  <ng-container content>
+    <div class="p-grid">
+      <div class="p-col-12 p-mb-3">
+        <h2 class="p-mb-2 p-pb-2">Required files for functionality</h2>
+        <ul>
+          <li class="p-mb-1">
+            core > services > <mark>form-builder.service.ts</mark> - For
+            creating angular form.
+          </li>
+          <li class="p-mb-1">
+            shared > models > <mark>form-builder.ts</mark> - Form builder model.
+          </li>
+          <li class="p-mb-1">
+            shared > compoents >
+            <mark>form-builder (folder and subfolder)</mark> - Form builder
+            component for generating form template.
+          </li>
+          <li class="p-mb-1">
+            shared > components >
+            <mark>ALL FORM COMPONENT TYPES (input, textarea etc.)</mark> - Form
+            fields compoents.
+          </li>
+          <li class="p-mb-1">
+            shared > components > <mark>field-errors</mark> - To display field
+            validation.
+          </li>
+        </ul>
+        <h3 class="p-mb-1 p-mt-3">NOTE:</h3>
+        <p>
+          If you want a field that doesn't exist here you can add it in the same
+          style as the components I added.
+        </p>
+      </div>
+      <div class="p-col-12 p-mb-3">
+        <h2 class="p-mb-2 p-pb-2">Service configuration</h2>
+        <p>
+          For each component it is necessary to add a service that will contain
+          the configuration of the form. <br />
+          That service should be named:
+          <mark><b>component-name</b>-fields.service.ts</mark>.
+        </p>
+        <p class="p-mt-2">
+          In this service you need to create a variable that will contain the
+          configuration and that will have the type FormBuilder[]
+        </p>
+        <pre class="p-mt-2">mainFields: FormBuilder[] = [ ... ]</pre>
+      </div>
+      <div class="p-col-12">
+        <h2 class="p-mb-2">HTML code for form builder</h2>
+      </div>
+      <div class="p-col-6 p-mb-3">
+        <pre>{{ formBuilderHTML }}</pre>
+      </div>
+      <div class="p-col-6 p-mb-3">
+        <p>
+          If you want multi language from you can add attribute
+          <mark>[multiLang]="true"</mark>
+        </p>
+      </div>
+      <div class="p-col-12">
+        <h2 class="p-mb-2">TS code for form builder</h2>
+        <p>
+          If you want ordinary form you can call service
+          <mark>form-builder.service.ts</mark> and execute function
+          <mark>createForm()</mark> and pass fields configurations.
+        </p>
+        <pre class="p-mt-2 p-mb-2">
+this.pageForm = this.formBuilder.createForm(this.fieldsService.mainFields);</pre
+        >
+        <p>
+          If you want multi language form just call function
+          createMultiLangForm()
+        </p>
+        <pre class="p-mt-2"> {{ multiLangFormTS }} </pre>
+      </div>
+      <div class="p-col-12">
+        <h2 class="p-mb-2 p-mt-2">Form controls UI + configuration</h2>
+        <p>
+          Set this fields in <mark>something-fields.service.ts</mark> service.
+        </p>
+      </div>
+      <div class="p-col-12">
+        <p-accordion>
+          <p-accordionTab
+            *ngFor="let field of fieldsService.mainFields; let index = index"
+            [header]="field.controlType"
+          >
+            <div class="p-grid">
+              <div class="p-col-6">
+                <app-form-builder
+                  [form]="pageForm"
+                  [fields]="getOneField(fieldsService.mainFields, index)"
+                ></app-form-builder>
+              </div>
+              <div class="p-col-6">
+                <pre>{{ field | json }}</pre>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+
+        <h3 class="p-mt-4 p-mb-2">Dummy fields</h3>
+        <p class="p-mb-3">
+          This fields doesn`t have UI representation, they just exist in angular
+          form builder.
+        </p>
+        <p-accordion>
+          <p-accordionTab
+            *ngFor="let field of fieldsService.dummyFields; let index = index"
+            header="Dummy fields configuration"
+          >
+            <div class="p-grid">
+              <div class="p-col-6">
+                <pre>{{ field | json }}</pre>
+              </div>
+              <div class="p-col-6">
+                <p>
+                  By default dummy field is control but you can set it to be
+                  array with: <mark>formControlType:'array'</mark>
+                </p>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="p-col-12">
+        <h2 class="p-mb-2 p-mt-2">Form grid</h2>
+        <p>
+          In property <mark>colSize</mark> for every field you can pass p-col-
+          classes from primeng (primeflex) grid system.
+        </p>
+        <h4 class="p-mt-3 p-mb-2">Example:</h4>
+        <div class="p-grid">
+          <div class="p-col-6">
+            <p class="p-mb-2">
+              Every field in this form will be 12 cols on mobile and 4 cols on
+              every other screen size.
+            </p>
+            <app-form-builder
+              [form]="pageForm"
+              [fields]="fieldsService.gridFields"
+            ></app-form-builder>
+          </div>
+          <div class="p-col-6">
+            <pre>
+              {{ fieldsService.gridFields[0] | json }}
+            </pre>
+          </div>
+        </div>
+        <h3 class="p-mt-4 p-mb-2">Field groups</h3>
+        <p class="p-mb-2">
+          If you want to group fields you can do so by putting them in a
+          <mark>group</mark> key. In that case you set colSize for whole group
+          not for single field, like in example bellow.
+        </p>
+        <app-form-builder
+          [form]="groupGridFields"
+          [fields]="fieldsService.groupGridFields"
+        ></app-form-builder>
+        <pre>{{ fieldsService.groupGridFields | json }}</pre>
+      </div>
+    </div>
+  </ng-container></app-content-layout
+>

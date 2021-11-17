@@ -1,0 +1,16 @@
+<ng-container>
+  <div class="p-field" [ngClass]="fieldOptions.containerClass">
+    <label>{{ fieldOptions.label }}</label>
+    <p-editor
+      [formControlName]="fieldOptions.formControlName"
+      class="quill-mb"
+      [style]="{ height: '320px' }"
+    ></p-editor>
+
+    <!-- <quill-editor
+      [formControlName]="fieldOptions.formControlName"
+      class="quill-mb"
+      [style]="{ height: '360px' }"
+    ></quill-editor> -->
+  </div>
+</ng-container>

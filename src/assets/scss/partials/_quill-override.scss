@@ -1,0 +1,26 @@
+// * QUILL
+.ql-container {
+  height: 320px;
+}
+.ql-toolbar {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  background-color: #fff;
+  border-color: $main-border;
+}
+.ql-editor {
+  background-color: #fff;
+  border-color: $main-border;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+.ql-snow .ql-tooltip {
+  z-index: 1050;
+  left: 0px !important;
+}
+.quill-mb {
+  margin-bottom: 60px;
+  @include xs {
+    margin-bottom: 100px;
+  }
+}

@@ -1,0 +1,85 @@
+<form
+  [attr.formGroup]="formGroup ? formGroup : null"
+  (ngSubmit)="onSubmitForm()"
+>
+  <div class="main-card">
+    <div class="card-header">
+      <a
+        *ngIf="headerType === 'inner'"
+        class="main-btn back-btn"
+        [routerLink]="backPath"
+        ><i class="pi pi-angle-left p-m-0"></i
+      ></a>
+      <h1
+        *ngIf="headerType === 'main' && headerTitle"
+        class="card-title p-text-uppercase"
+      >
+        {{ headerTitle }}
+      </h1>
+      <section class="p-d-flex p-ai-center">
+        <ng-content select="[buttons]"></ng-content>
+        <a
+          *ngIf="dataForPage && showPreviewButton"
+          [href]="websiteUrl"
+          target="_blank"
+          class="main-btn main-btn-outlined p-mr-2"
+        >
+          Pregledaj
+          <i class="pi pi-reply"></i>
+        </a>
+        <!-- <a
+          *ngIf="showAddButton"
+          [routerLink]="['./add']"
+          class="main-btn p-mr-2"
+        >
+          Dodaj <i class="pi pi-plus"></i>
+        </a> -->
+        <app-button
+          *ngIf="showAddButton"
+          type="button"
+          btnStyle="main"
+          styleClass="main-btn p-mr-2"
+          [routerLink]="['./add']"
+          icon="plus"
+          >Dodaj</app-button
+        >
+        <app-button
+          *ngIf="formGroup"
+          [disabled]="!formGroup.valid"
+          type="button"
+          btnStyle="main"
+          icon="save"
+          (click)="onSubmitForm()"
+          >{{ saveBtnText }}</app-button
+        >
+      </section>
+    </div>
+    <div *ngIf="headerType === 'inner'" class="card-title-section">
+      <h2 class="card-title">{{ headerTitle }}</h2>
+
+      <div
+        class="p-field p-flex-row p-ai-center p-m-0"
+        *ngIf="headerType === 'inner' && dataForPage"
+      >
+        <label>Objavljena</label>
+        <p-inputSwitch
+          styleClass="p-ml-2"
+          [ngModelOptions]="{ standalone: true }"
+          [ngModel]="dataForPage.post_status === 1 ? true : false"
+          (onChange)="onChangePageStatus($event, pageId)"
+          [name]="dataForPage.post_name"
+        ></p-inputSwitch>
+      </div>
+    </div>
+    <ng-container *ngIf="skeletonLoad; else formTemplate">
+      <div class="card-body">
+        <app-skeleton></app-skeleton>
+      </div>
+    </ng-container>
+    <ng-template #formTemplate>
+      <div class="card-body">
+        <ng-content select="[content]"></ng-content>
+      </div>
+    </ng-template>
+  </div>
+</form>

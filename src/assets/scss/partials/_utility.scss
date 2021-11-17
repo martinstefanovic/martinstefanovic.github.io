@@ -1,0 +1,79 @@
+@import "src/assets/scss/partials/variables";
+
+// * UTILITY CLASSES
+
+.sidebar-in-progress span::after {
+  content: "In progress";
+  position: absolute;
+  font-size: 0.6rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: $border-radius;
+  float: right;
+  right: 10px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  color: $text-color;
+  background-color: $yellow;
+}
+
+.p-border {
+  border: 1px solid #dee2e6;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.w-fit-content {
+  width: fit-content !important;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.dropdown-width {
+  width: 200px;
+}
+
+.w-btn-group {
+  width: 65px;
+  @include xs {
+    display: inline-block !important;
+    width: 90px;
+  }
+}
+
+.in-progress {
+  color: var(--pink-500);
+  display: flex;
+  align-items: center;
+  i {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+}
+
+// ? Backgrounds
+.bg-secondary {
+  background-color: $secondary !important;
+  &:hover {
+    background-color: darken($secondary, 7%) !important;
+  }
+}
+
+.bg-light {
+  background-color: #d5daea !important;
+}
+
+.bg-dark {
+  background-color: $dark !important;
+}
+
+// Margins & Padding
+
+.p-sm-mt-0 {
+  @include xs {
+    margin-top: 0px !important;
+  }
+}

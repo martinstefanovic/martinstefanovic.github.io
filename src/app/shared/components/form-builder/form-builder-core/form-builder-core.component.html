@@ -1,0 +1,25 @@
+<!-- * Find and use type of control -->
+<ng-container *ngIf="field.controlType == 'input'">
+  <app-input [options]="field.options" [customFormGroup]="mainForm"></app-input>
+</ng-container>
+<ng-container *ngIf="field.controlType == 'chips'">
+  <app-chips [options]="field.options" [customFormGroup]="mainForm"></app-chips>
+</ng-container>
+<ng-container *ngIf="field.controlType == 'input-password'">
+  <app-input-password [options]="field.options"></app-input-password>
+</ng-container>
+<ng-container *ngIf="field.controlType == 'rich-editor'">
+  <app-rich-editor [options]="field.options"></app-rich-editor>
+</ng-container>
+<ng-container *ngIf="field.controlType == 'textarea'">
+  <app-textarea [options]="field.options"></app-textarea>
+</ng-container>
+<ng-container *ngIf="field.controlType == 'dropdown'">
+  <app-dropdown
+    [options]="field.options"
+    [customFormGroup]="mainForm"
+  ></app-dropdown>
+</ng-container>
+<ng-container *ngIf="field.controlType == 'page-seo'">
+  <app-page-seo [formGroup]="form"></app-page-seo>
+</ng-container>

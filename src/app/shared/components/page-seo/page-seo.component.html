@@ -1,0 +1,28 @@
+<p-accordion>
+  <p-accordionTab header="SEO OPTIMIZACIJA">
+    <div class="p-grid" [formGroup]="formGroup">
+      <div class="p-col-12 p-sm-4 ">
+        <div class="p-field w-100">
+          <label>Meta title</label>
+          <input type="text"  formControlName="meta_title" pInputText />
+        </div>
+        <div class="p-field w-100">
+          <label>Meta keywords</label>
+          <input type="text"  formControlName="meta_keywords" pInputText />
+        </div>
+      </div>
+      <div class="p-col-12 p-sm-4 ">
+        <div class="p-field w-100">
+          <label>Meta description</label>
+          <textarea [rows]="5" formControlName="meta_description" pInputTextarea></textarea>
+        </div>
+      </div>
+      <div class="p-col-12 p-sm-4 ">
+        <div class="p-field w-100">
+          <label>Slug</label>
+          <input type="text"  formControlName="slug" pInputText />
+        </div>
+      </div>
+    </div>
+  </p-accordionTab>
+</p-accordion>

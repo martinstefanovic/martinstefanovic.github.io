@@ -1,0 +1,37 @@
+<div class="p-field w-100" [ngClass]="fieldOptions.containerClass">
+  <ng-container
+    *ngIf="
+      fieldOptions.fieldFormGroup || fieldOptions.fieldFormGroup == '';
+      else elseTemplate
+    "
+  >
+    <ng-container [formGroup]="specificFormGroup">
+      <label *ngIf="fieldOptions.label">{{ fieldOptions.label }}</label>
+      <p-dropdown
+        [options]="fieldOptions.dropdownOptions"
+        [optionLabel]="fieldOptions.optionLabel"
+        [placeholder]="fieldOptions.placeholder"
+        [formControlName]="fieldOptions.formControlName"
+        [optionValue]="fieldOptions.optionValue"
+        styleClass="w-100"
+        (onChange)="onChangeValue()"
+        [showClear]="false"
+      ></p-dropdown>
+    </ng-container>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <label *ngIf="fieldOptions.label">{{ fieldOptions.label }}</label>
+    <p-dropdown
+      [options]="fieldOptions.dropdownOptions"
+      [optionLabel]="fieldOptions.optionLabel"
+      [placeholder]="fieldOptions.placeholder"
+      [formControlName]="fieldOptions.formControlName"
+      [optionValue]="fieldOptions.optionValue"
+      styleClass="w-100"
+      (onChange)="onChangeValue()"
+      [showClear]="false"
+    ></p-dropdown>
+  </ng-template>
+
+  <app-field-errors [errors]="errors"></app-field-errors>
+</div>
